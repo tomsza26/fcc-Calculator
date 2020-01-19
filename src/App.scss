@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Alata&display=swap');
+
+$colorOne: #7895c2;
+$colorTwo: #3d354d;
+
+* {
+	font-family: 'Alata', sans-serif;
+}
+
+body {
+	background: $colorOne;
+}
+
+#calculator-main {
+	background: $colorTwo;
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	width: 400px;
+	margin: 70px auto 0 auto;
+
+	#history {
+		grid-column: 1/5;
+		text-align: right;
+		color: $colorOne;
+		font-size: 20px;
+		padding-right: 5px;
+		border-bottom: 1px solid #000;
+	}
+
+	#display {
+		text-align: right;
+		grid-column: 1/5;
+		color: $colorOne;
+		font-size: 25px;
+		padding-right: 5px;
+	}
+
+	button {
+		border: 1px solid #000;
+		color: $colorOne;
+		background: $colorTwo;
+		text-align: center;
+		text-decoration: none;
+		font-size: 20px;
+		cursor: pointer;
+		padding: 25px 0;
+	}
+
+	button::-moz-focus-inner {
+		border: 0;
+	}
+
+	button:focus {
+		outline: none;
+	}
+
+	button:hover {
+		color: #c5dcde;
+	}
+
+	#clear {
+		background: #870808;
+		grid-column: 1/3;
+	}
+
+	#equals {
+		grid-row: 6/8;
+		grid-column: 4/5;
+	}
+
+	#zero {
+		grid-row: 7/8;
+		grid-column: 1/3;
+	}
+}
