@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Alata&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
 
 $colorOne: #7895c2;
 $colorTwo: #3d354d;
+$colorThree: #d6e2ff;
 
 * {
-	font-family: 'Alata', sans-serif;
+	font-family: 'Orbitron', sans-serif;
 }
 
 body {
@@ -17,33 +18,37 @@ body {
 	grid-template-columns: auto auto auto auto;
 	width: 400px;
 	margin: 70px auto 0 auto;
+	padding: 5px;
+	border-style: outset;
 
 	#history {
 		grid-column: 1/5;
 		text-align: right;
-		color: $colorOne;
+		color: #ded202;
 		font-size: 20px;
 		padding-right: 5px;
-		border-bottom: 1px solid #000;
+		word-wrap: anywhere;
 	}
 
 	#display {
 		text-align: right;
 		grid-column: 1/5;
-		color: $colorOne;
+		color: $colorThree;
 		font-size: 25px;
 		padding-right: 5px;
+		word-wrap: anywhere;
 	}
 
 	button {
-		border: 1px solid #000;
-		color: $colorOne;
-		background: $colorTwo;
+		border: 1px solid $colorTwo;
+		color: $colorThree;
+		background: #43474d;
 		text-align: center;
 		text-decoration: none;
 		font-size: 20px;
 		cursor: pointer;
 		padding: 25px 0;
+		transition-timing-function: ease;
 	}
 
 	button::-moz-focus-inner {
@@ -55,7 +60,8 @@ body {
 	}
 
 	button:hover {
-		color: #c5dcde;
+		color: #fcaba9;
+		border: 1px solid #fcaba9;
 	}
 
 	#clear {
@@ -66,10 +72,28 @@ body {
 	#equals {
 		grid-row: 6/8;
 		grid-column: 4/5;
+		background: #4e3bff;
 	}
 
 	#zero {
 		grid-row: 7/8;
 		grid-column: 1/3;
+	}
+
+	#divide,
+	#multiply,
+	#subtract,
+	#add {
+		background: #7d7f82;
+	}
+}
+
+@media screen and (max-width: 420px) {
+	#calculator-main {
+		width: 100vw;
+		height: 100vh;
+		margin: 0;
+		padding: 0;
+		border-style: none;
 	}
 }
