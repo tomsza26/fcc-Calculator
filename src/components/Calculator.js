@@ -1,18 +1,14 @@
 import React from 'react';
 
 class Calculator extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		let { calcValue } = this.props;
 		let { history } = this.props;
 
 		return (
 			<div id="calculator-main">
-				<div id="history">{history}</div>
-				<div id="display">{calcValue}</div>
+				<div id="history">{calcValue}</div>
+				<div id="display">{history}</div>
 				<button name="AC" id="clear" onClick={(e) => this.props.onClick(e.target.name)}>
 					AC
 				</button>
