@@ -63,6 +63,11 @@ class App extends React.Component {
 						history: button,
 						calcValue: this.state.calcValue.replace(/.$/, button)
 					});
+				} else if (this.state.history == '0' && button == '.' && this.state.calcValue != '0') {
+					this.setState({
+						history: this.state.history + button,
+						calcValue: this.state.calcValue + button
+					});
 				} else if (this.state.history == '0' && button == '.') {
 					this.setState({
 						history: '0.',
