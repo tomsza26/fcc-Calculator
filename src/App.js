@@ -21,78 +21,81 @@ class App extends React.Component {
 		} else if (button === 'AC') {
 			this.clear();
 		} else {
-			if (this.state.history == 'DIGIT LIMIT MET') {
-			} else if (this.state.history.length < 20) {
+			let stateCalcVal = this.state.calcValue;
+			let stateHis = this.state.history;
+
+			if (stateHis == 'DIGIT LIMIT MET') {
+			} else if (stateHis.length < 20) {
 				const regex = new RegExp(/[/*+]/);
-				if (this.state.calcValue.includes('=') && !isNaN(button)) {
+				if (stateCalcVal.includes('=') && !isNaN(button)) {
 					this.setState({
 						calcValue: button,
 						history: button
 					});
-				} else if (this.state.calcValue.includes('=') && isNaN(button)) {
+				} else if (stateCalcVal.includes('=') && isNaN(button)) {
 					this.setState({
-						calcValue: this.state.history + button,
+						calcValue: stateHis + button,
 						history: button
 					});
 				} else if (
-					(button == '-' && this.state.history[this.state.history.length - 1] == '-') ||
-					(this.state.history == '0' && regex.test(button))
+					(button == '-' && stateHis[stateHis.length - 1] == '-') ||
+					(stateHis == '0' && regex.test(button))
 				) {
 				} else if (
-					(this.state.history.slice(-1).includes('.') && button == '.') ||
-					((this.state.calcValue == '0' || this.state.calcValue == '-') && regex.test(button))
+					(stateHis.slice(-1).includes('.') && button == '.') ||
+					((stateCalcVal == '0' || stateCalcVal == '-') && regex.test(button))
 				) {
-				} else if (this.state.calcValue == '-0' && button == '0') {
+				} else if (stateCalcVal == '-0' && button == '0') {
 				} else if (
-					this.state.calcValue[this.state.calcValue.length - 1] == '-' &&
-					regex.test(this.state.calcValue[this.state.calcValue.length - 2]) &&
+					stateCalcVal[stateCalcVal.length - 1] == '-' &&
+					regex.test(stateCalcVal[stateCalcVal.length - 2]) &&
 					isNaN(button)
 				) {
-					let temporary = this.state.calcValue.substring(0, this.state.calcValue.length - 2);
+					let temporary = stateCalcVal.substring(0, stateCalcVal.length - 2);
 					this.setState({
 						history: button,
 						calcValue: temporary + button
 					});
-				} else if (regex.test(this.state.calcValue.slice(-1)) && button == '-') {
+				} else if (regex.test(stateCalcVal.slice(-1)) && button == '-') {
 					this.setState({
 						history: button,
-						calcValue: this.state.calcValue + button
+						calcValue: stateCalcVal + button
 					});
-				} else if (isNaN(this.state.calcValue[this.state.calcValue.length - 1]) && isNaN(button)) {
+				} else if (isNaN(stateCalcVal[stateCalcVal.length - 1]) && isNaN(button)) {
 					this.setState({
 						history: button,
-						calcValue: this.state.calcValue.replace(/.$/, button)
+						calcValue: stateCalcVal.replace(/.$/, button)
 					});
-				} else if (this.state.history == '0' && button == '.' && this.state.calcValue != '0') {
+				} else if (stateHis == '0' && button == '.' && stateCalcVal != '0') {
 					this.setState({
-						history: this.state.history + button,
-						calcValue: this.state.calcValue + button
+						history: stateHis + button,
+						calcValue: stateCalcVal + button
 					});
-				} else if (this.state.history == '0' && button == '.') {
+				} else if (stateHis == '0' && button == '.') {
 					this.setState({
 						history: '0.',
 						calcValue: '0.'
 					});
-				} else if (regex.test(button) || regex.test(this.state.history)) {
+				} else if (regex.test(button) || regex.test(stateHis)) {
 					this.setState({
 						history: button,
-						calcValue: this.state.calcValue + button
+						calcValue: stateCalcVal + button
 					});
-				} else if (this.state.history == '0') {
+				} else if (stateHis == '0') {
 					this.setState({
 						history: button,
 						calcValue: button
 					});
-				} else if (this.state.history.includes('.') && button == '.') {
-				} else if (!isNaN(this.state.calcValue) && button == '-') {
+				} else if (stateHis.includes('.') && button == '.') {
+				} else if (!isNaN(stateCalcVal) && button == '-') {
 					this.setState({
 						history: button,
-						calcValue: this.state.calcValue + button
+						calcValue: stateCalcVal + button
 					});
 				} else {
 					this.setState({
-						history: this.state.history + button,
-						calcValue: this.state.calcValue + button
+						history: stateHis + button,
+						calcValue: stateCalcVal + button
 					});
 				}
 			} else {
@@ -100,10 +103,10 @@ class App extends React.Component {
 				if (regex2.test(button)) {
 					this.setState({
 						history: button,
-						calcValue: this.state.calcValue + button
+						calcValue: stateCalcVal + button
 					});
 				} else {
-					let current = this.state.calcValue;
+					let current = stateCalcVal;
 					this.setState({
 						history: 'DIGIT LIMIT MET'
 					});
