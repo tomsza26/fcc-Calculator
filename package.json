@@ -10,7 +10,7 @@
 		"bootstrap": "^4.4.1",
 		"gh-pages": "^2.2.0",
 		"math.js": "^1.1.45",
-		"mathjs": "^6.5.0",
+		"mathjs": "^7.5.1",
 		"node-sass": "^4.13.1",
 		"react": "^16.12.0",
 		"react-bootstrap": "^1.0.0-beta.16",
